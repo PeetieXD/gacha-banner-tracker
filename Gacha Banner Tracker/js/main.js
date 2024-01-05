@@ -439,7 +439,8 @@ function editTile(data){
     let countUpButton = data.parentNode.children[7];
     let gotFiveStarButton = data.parentNode.children[8];
     let gotFourStarButton = data.parentNode.children[9];
-    let deleteTileButton = data.parentNode.children[10];
+    let guaranteeIndicatorButton = data.parentNode.children[10];
+    let deleteTileButton = data.parentNode.children[11];
     if(nameDisplay.style.visibility == "visible"){
         // Hide labels
         nameDisplay.style.visibility = "hidden";
@@ -451,6 +452,7 @@ function editTile(data){
         countUpButton.style.visibility = "hidden";
         gotFiveStarButton.style.visibility = "hidden";
         gotFourStarButton.style.visibility = "hidden";
+        guaranteeIndicatorButton.style.visibility = "hidden";
 
         // Update inputs
         data.parentNode.children[3].value = data.parentNode.children[0].innerHTML;
@@ -475,6 +477,7 @@ function editTile(data){
         countUpButton.style.visibility = "visible";
         gotFiveStarButton.style.visibility = "visible";
         gotFourStarButton.style.visibility = "visible";
+        guaranteeIndicatorButton.style.visibility = "visible";
 
         // Update labels
         data.parentNode.children[0].innerHTML = data.parentNode.children[3].value;
