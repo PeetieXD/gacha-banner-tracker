@@ -1,0 +1,442 @@
+:root{
+    --navBarColor: transparent;
+    /* WHITE THEME
+    --textColor: #A0CCFF;*/
+    --textColor: #0076FF;
+    --backgroundColor: #eeeeee;
+    --boxShadowColor1: #cacaca;
+    --boxShadowColor2: #ffffff;
+
+
+    /* Discord Ish
+    --textColor: #d9b0ff;
+    --backgroundColor: #292b2f;
+    --boxShadowColor1: #1c1e20;
+    --boxShadowColor2: #36383e;
+    */
+
+    /* Random
+    --textColor: #00ffff;
+    --backgroundColor: #8080ff;
+    --boxShadowColor1: #004080;
+    --boxShadowColor2: #8000ff;
+    */
+
+    /* Whatever Lilac I sent on discord
+    --textColor: #7b53ac;
+    --backgroundColor: #e3e2fa;
+    --boxShadowColor1: #c1a9eb;
+    --boxShadowColor2: #c6ffff;
+    */
+
+    --hoverDeleteColor: rgb(255, 102, 102);
+
+    --lightSpreadMultiplier: 1;
+
+    --fiveStarColor: #ff8800;
+    --fourStarColor: #7700ff;
+    --guaranteeIndicatorColor: #ffd451;
+
+    --customFont: honkaiFont;
+    --iconSizes: 50px;
+
+    --lightOriginRotation: 145deg;
+
+
+}
+
+@font-face {
+    font-family: genshinFont;
+    src: url(../fonts/GIFont.ttf);
+}
+
+@font-face {
+    font-family: honkaiFont;
+    src: url(../fonts/HSRFont.ttf);
+}
+
+
+html {
+    user-select: none;
+}
+
+body {
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    font-family: var(--customFont);
+}
+
+svg {
+    position: relative;
+    top: 2px;
+    left: 0px;
+}
+
+button, textarea, input {
+    font-family: var(--customFont);
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+    border: none;
+    border-radius: 25px;
+    resize: none;
+    padding: 0;
+
+    /* box-shadow: inset 0px 0px 10px var(--boxShadowColor); */
+}
+
+button span {
+    position: relative;
+    top: 10%;
+    left: 15%;
+    text-shadow: 0 0 calc(var(--lightSpreadMultiplier) * 10px) var(--textColor);
+}
+
+#styleThemes {
+    position: absolute;
+    top: 150px;
+    display: grid;
+}
+
+#styleThemes button {
+    display: flex;
+    background-color: var(--boxShadowColor);
+    width: var(--iconSizes);
+    height: var(--iconSizes);
+    border: none;
+    padding: 0;
+    margin: 5px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px var(--boxShadowColor1),
+    -5px -5px 10px var(--boxShadowColor2);
+}
+
+#styleThemes button:hover {
+    box-shadow: inset 0 0 10px var(--textColor), 0 0 20px var(--textColor);
+}
+
+#styleThemes button span {
+    height: 25px;
+    width: 25px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background: linear-gradient(var(--lightOriginRotation) , var(--color1), var(--color2));
+    left: 12px;
+    top: 11px;
+}
+
+#navBar {
+    height: 50px;
+    background-color: var(--navBarColor);
+    display: flex;
+    transition: 2s;
+}
+
+#navBar button {
+    background-color: var(--boxShadowColor);
+    width: var(--iconSizes);
+    height: var(--iconSizes);
+    border: none;
+    padding: 0;
+    margin: 5px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px var(--boxShadowColor1),
+    -5px -5px 10px var(--boxShadowColor2);
+}
+
+#navBar button:hover {
+    box-shadow: inset 0 0 10px var(--textColor), 0 0 20px var(--textColor);
+}
+
+#navBar button svg {
+    margin: 0;
+    width: calc(var(--iconSizes) - 20px);
+    height: calc(var(--iconSizes) - 20px);
+    fill: var(--textColor);
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px))
+}
+
+.openColorPicker {
+    height: 250px !important;
+    transition: 1s;
+}
+
+.openColorPickerButton {
+    width: 300px !important;
+    transition: 1s;
+}
+
+#colorPicker {
+    transition: 2s;
+}
+
+#colorPicker svg {
+    position: relative;
+    margin: 5px;
+    translate: 0px 8px;
+    transition: 1s;
+}
+
+.animateColorPickerSVG {
+    translate: -125px -36px !important;
+    transition: 1s;
+}
+
+.hiddenColorPickers {
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+}
+
+.showColorPickers {
+    visibility: visible;
+    display: flex !important;
+    opacity: 1 !important;
+    transition-delay: 2s;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+#mainTiles {
+    display: grid;
+    margin-top: 50px;
+    justify-content: center;
+    grid-template-columns: 25vw 25vw 25vw;
+    grid-gap: 50px;
+}
+
+#mainTiles div {
+    padding: 30px;
+    height: 300px;
+
+    display: grid;
+    grid-template-columns: 10% 10% 60% 10% 10%;
+    grid-template-rows: 15% 20% 25% 10% 10% 10% 10%;
+    grid-template-areas:
+    "name name name deleteTile editTile"
+    ". . . . ."
+    "countDown countDown mainCounter countUp countUp"
+    ". . . . ."
+    ". . smallCounter . ."
+    "gotFiveStar gotFiveStar smallCounter gotFourStar gotFourStar"
+    "gotFiveStar gotFiveStar guaranteeIndicator gotFourStar gotFourStar";
+    justify-content: center;
+    border-radius: 50px;
+    box-shadow: 10px 10px 40px var(--boxShadowColor1),
+    -10px -10px 40px var(--boxShadowColor2);
+}
+
+.name, .inputName {
+    grid-area: name;
+    text-align: center;
+    text-shadow: 0 0 calc(var(--lightSpreadMultiplier) * 10px) var(--textColor);
+}
+
+.inputName {
+    padding: 10px;
+}
+
+.mainCounter {
+    grid-area: mainCounter;
+    justify-self: center;
+    text-align: center;
+    font-size: 5em;
+    margin-top: -10px;
+    text-shadow: 0 0 calc(var(--lightSpreadMultiplier) * 10px) var(--textColor);
+}
+
+.inputMainCounterText {
+    grid-area: mainCounter;
+    justify-self: center;
+    text-align: center;
+    /*
+    box-shadow: inset 0 15px 3px -10px var(--textColor),
+    inset 0 -15px 3px -10px var(--textColor);
+    */
+    box-shadow: inset 28px 0 5px -10px var(--textColor),
+    inset -28px 0 5px -10px var(--textColor);
+}
+
+.smallCounter {
+    grid-area: smallCounter;
+    justify-self: center;
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: -10px;
+    text-shadow: 0 0 calc(var(--lightSpreadMultiplier) * 10px) var(--textColor);
+}
+
+.inputSmallCounterText {
+    grid-area: smallCounter;
+    justify-self: center;
+    text-align: center;
+    /*
+    box-shadow: inset 0 15px 3px -10px var(--textColor),
+    inset 0 -15px 3px -10px var(--textColor);
+    */
+    box-shadow: inset 28px 0 5px -10px var(--textColor),
+    inset -28px 0 5px -10px var(--textColor);
+    border-radius: 15px;
+}
+
+.countDown {
+    grid-area: countDown;
+    border: none;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    width: auto;
+    justify-self: center;
+    box-shadow: 10px 10px 40px var(--boxShadowColor1),
+    -10px -10px 40px var(--boxShadowColor2);
+}
+
+.countDown:hover {
+    box-shadow: inset 0 0 10px var(--textColor), 0 0 20px var(--textColor);
+}
+
+.countDown svg {
+    fill: var(--textColor);
+    height: 80%;
+    width: 80%;
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px));
+}
+
+.countUp {
+    grid-area: countUp;
+    border: none;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    width: auto;
+    justify-self: center;
+    margin: 0;
+    box-shadow: 10px 10px 40px var(--boxShadowColor1),
+    -10px -10px 40px var(--boxShadowColor2);
+}
+
+.countUp:hover {
+    box-shadow: inset 0 0 10px var(--textColor), 0 0 20px var(--textColor);
+}
+
+.countUp svg {
+    fill: var(--textColor);
+    height: 80%;
+    width: 80%;
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px));
+}
+
+.gotFiveStar {
+    grid-area: gotFiveStar;
+    box-shadow: 10px 10px 40px var(--boxShadowColor1),
+    -10px -10px 40px var(--boxShadowColor2);
+}
+
+.gotFiveStar:hover {
+    box-shadow: inset 0 0 10px var(--fiveStarColor), 0 0 20px var(--fiveStarColor);
+}
+
+.gotFiveStar svg:nth-child(2) {
+    position: relative;
+    left: 3px;
+    top: 8px;
+    fill: var(--textColor);
+    height: 60%;
+    width: 60%;
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px));
+}
+.gotFiveStar svg:nth-child(3){
+    position: relative;
+    left: 16px;
+    top: -18px;
+    fill: var(--textColor);
+    height: 20%;
+    width: 20%;
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px));
+}
+
+.gotFourStar {
+    grid-area: gotFourStar;
+    box-shadow: 10px 10px 40px var(--boxShadowColor1),
+    -10px -10px 40px var(--boxShadowColor2);
+}
+
+.gotFourStar:hover {
+    box-shadow: inset 0 0 10px var(--fourStarColor), 0 0 20px var(--fourStarColor);
+}
+
+.gotFourStar svg:nth-child(2) {
+    position: relative;
+    left: 3px;
+    top: 8px;
+    fill: var(--textColor);
+    height: 60%;
+    width: 60%;
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px));
+}
+.gotFourStar svg:nth-child(3){
+    position: relative;
+    left: 16px;
+    top: -18px;
+    fill: var(--textColor);
+    height: 20%;
+    width: 20%;
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px));
+}
+
+.guaranteeIndicator {
+    grid-area: guaranteeIndicator;
+    background-color: #ffd4517d;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.guaranteed {
+    box-shadow: inset 0 0 10px var(--guaranteeIndicatorColor), 0 0 20px var(--guaranteeIndicatorColor);
+}
+
+
+.deleteTile{
+    grid-area: deleteTile;
+    border: none;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    box-shadow: 5px 5px 10px var(--boxShadowColor1),
+    -5px -5px 10px var(--boxShadowColor2);
+}
+
+.deleteTile:hover{
+    box-shadow: inset 0 0 5px var(--hoverDeleteColor), 0 0 5px var(--hoverDeleteColor);
+}
+
+.deleteTile svg:hover {
+    fill: var(--hoverDeleteColor);
+    color: var(--hoverDeleteColor);
+}
+
+.editTile{
+    grid-area: editTile;
+    border: none;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    box-shadow: 5px 5px 10px var(--boxShadowColor1),
+    -5px -5px 10px var(--boxShadowColor2);
+}
+
+.editTile:hover {
+    box-shadow: inset 0 0 5px var(--hoverDeleteColor), 0 0 5px var(--hoverDeleteColor);
+}
+
+.editTile svg, .deleteTile svg {
+    fill: var(--textColor);
+    height: 60%;
+    width: 60%;
+    filter: drop-shadow(0 0 calc(var(--lightSpreadMultiplier) * 2px));
+}
+.toggleButton {
+    fill: var(--hoverDeleteColor) !important;
+    color: var(--hoverDeleteColor);
+}
